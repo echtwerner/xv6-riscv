@@ -28,7 +28,8 @@ kinit()
 {
   initlock(&kmem.lock, "kmem");
   freerange(end, (void*)PHYSTOP);
-  printf("kinit: Start: %p, End:%p\n",end, (void*)PHYSTOP);
+  printf("kinit: Start Addr: %p, End Addr:%p\n",end, (void*)PHYSTOP);
+  printf("kinit: freepages %d\n", freepg());
 }
 
 void
