@@ -43,12 +43,12 @@ proc_mapstacks(pagetable_t kpgtbl)
   }
 }
 
+
 // initialize the proc table.
 void
 procinit(void)
 {
   struct proc *p;
-  
   initlock(&pid_lock, "nextpid");
   initlock(&wait_lock, "wait_lock");
   for(p = proc; p < &proc[NPROC]; p++) {
@@ -681,3 +681,12 @@ procdump(void)
     printf("\n");
   }
 }
+
+int
+mytest(void)
+{
+  printf("mytest:\n");
+  return 1;
+}
+
+

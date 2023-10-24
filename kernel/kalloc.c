@@ -28,6 +28,7 @@ kinit()
 {
   initlock(&kmem.lock, "kmem");
   freerange(end, (void*)PHYSTOP);
+  printf("kinit: Start: %p, End:%p\n",end, (void*)PHYSTOP);
 }
 
 void
@@ -69,7 +70,6 @@ void *
 kalloc(void)
 {
   struct run *r;
-
   acquire(&kmem.lock);
   r = kmem.freelist;
   if(r)
@@ -78,5 +78,6 @@ kalloc(void)
 
   if(r)
     memset((char*)r, 5, PGSIZE); // fill with junk
+  //printf("kalloc: %p\n", (void*)r);
   return (void*)r;
 }
