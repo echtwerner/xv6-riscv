@@ -81,3 +81,17 @@ kalloc(void)
   //printf("kalloc: %p\n", (void*)r);
   return (void*)r;
 }
+
+
+int
+freepg(void)
+{
+  struct run *r;
+  acquire(&kmem.lock);
+  int i = 1; 
+  for (r = kmem.freelist; r; r = r-> next) {
+      i++;
+  }
+  release(&kmem.lock);
+ return i;
+}

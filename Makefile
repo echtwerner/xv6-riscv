@@ -119,12 +119,14 @@ UPROGS=\
 	$U/_cat\
 	$U/_echo\
 	$U/_forktest\
+	$U/_free\
 	$U/_grep\
 	$U/_init\
 	$U/_kill\
 	$U/_ln\
 	$U/_ls\
 	$U/_mkdir\
+	$U/_mytest\
 	$U/_rm\
 	$U/_sh\
 	$U/_stressfs\
@@ -132,7 +134,9 @@ UPROGS=\
 	$U/_grind\
 	$U/_wc\
 	$U/_zombie\
-	$U/_mytest\
+	
+	
+
 
 fs.img: mkfs/mkfs README $(UPROGS)
 	mkfs/mkfs fs.img README $(UPROGS)

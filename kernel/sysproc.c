@@ -95,3 +95,9 @@ sys_mytest(void)
 {
  return mytest();
 }
+
+uint64
+sys_freepg(void)
+{
+ return freepg();
+}

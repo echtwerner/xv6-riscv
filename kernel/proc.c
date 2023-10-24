@@ -685,7 +685,7 @@ procdump(void)
 int
 mytest(void)
 {
-  printf("mytest:\n");
+  printf("mytest: kernelmode\n");
   return 1;
 }
 
