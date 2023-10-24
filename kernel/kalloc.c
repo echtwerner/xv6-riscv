@@ -82,7 +82,7 @@ kalloc(void)
   return (void*)r;
 }
 
-
+// return numbers of free Memory Pages
 int
 freepg(void)
 {

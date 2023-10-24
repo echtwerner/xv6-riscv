@@ -682,6 +682,8 @@ procdump(void)
   }
 }
 
+// Testfunction to call kernel mode from user mode
+// returns an int if return value is not needed int will be set to 1
 int
 mytest(void)
 {
