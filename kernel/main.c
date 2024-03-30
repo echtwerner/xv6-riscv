@@ -10,6 +10,7 @@ volatile static int started = 0;
 void
 main()
 {
+  uint w = 0; 
   if(cpuid() == 0){
     consoleinit();
     printfinit();
@@ -33,9 +34,10 @@ main()
     started = 1;
   } else {
     while(started == 0)
-      ;
+     w = w + 1;
+     ;
     __sync_synchronize();
-    printf("hart %d starting\n", cpuid());
+    printf("hart %d starting: wait cycle %d\n", cpuid(), w);
     kvminithart();    // turn on paging
     trapinithart();   // install kernel trap vector
     plicinithart();   // ask PLIC for device interrupts
