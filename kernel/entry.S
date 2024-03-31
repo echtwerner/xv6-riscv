@@ -10,7 +10,7 @@ _entry:
         # with a kilobytes stack per CPU as definied in param.h STACKSIZECPU.
         # sp = stack0 + (hartid * STACKSIZECPU) 
         la sp, stack0
-        li a0, 1024 * 4 # Value MUST be the same like in param.h
+        li a0, 1024 * 16 # Value MUST be the same like in param.h
         csrr a1, mhartid
         addi a1, a1, 1
         mul a0, a0, a1
