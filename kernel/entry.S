@@ -7,8 +7,8 @@
 _entry:
         # set up a stack for C.
         # stack0 is declared in start.c,
-        # with a kilobytes stack per CPU as definied in param.h STACKSIZECPU.
-        # sp = stack0 + (hartid * STACKSIZECPU) 
+        # with a kilobytes stack per CPU as definied in param.h CPUSTACKSIZE.
+        # sp = stack0 + (hartid * CPUSTACKSIZE) 
         la sp, stack0
         li a0, 1024 * 16 # Value MUST be the same like in param.h
         csrr a1, mhartid

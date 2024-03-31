@@ -17,7 +17,7 @@ main()
     printf("\n");
     printf("xv6 kernel is booting\n");
     printf("\n");
-    printf("Stacksize per CPU is %d bytes\n", 1024 * STACKSIZECPU);
+    printf("Stacksize per CPU is %d bytes\n", 1024 * CPUSTACKSIZE);
     printf("\n");
     kinit();         // physical page allocator
     kvminit();       // create kernel page table
