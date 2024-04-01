@@ -1,7 +1,7 @@
 K=kernel
 U=user
 RAM=128M
-CPUCOUNT=8
+CPUCOUNT=2
 
 OBJS = \
   $K/entry.o \
