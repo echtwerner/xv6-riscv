@@ -1,6 +1,7 @@
 K=kernel
 U=user
 RAM=128M
+CPUCOUNT=8
 
 OBJS = \
   $K/entry.o \
@@ -159,7 +160,7 @@ QEMUGDB = $(shell if $(QEMU) -help | grep -q '^-gdb'; \
 	then echo "-gdb tcp::$(GDBPORT)"; \
 	else echo "-s -p $(GDBPORT)"; fi)
 ifndef CPUS
-CPUS := 3
+CPUS := $(CPUCOUNT)
 endif
 
 QEMUOPTS = -machine virt -bios none -kernel $K/kernel -m $(RAM) -smp $(CPUS) -nographic
