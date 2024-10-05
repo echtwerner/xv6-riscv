@@ -1,10 +1,21 @@
+#include "memlayout.h"
+
 # This is only for moving the entry on a different location. Just to see how things are changing
+
+# Instead of using memlayout.h to define the Base address if UART we can use define in .data section
+#   uartbase: .word 0x10000000 
+# and use it in .text section 
+#   la a0, UART0       # Load the address of the uartbase inti a0
+#   lw t2, 0(a0)       # Load the word (4 bytes) into t2 
+# or we could use
+#   li t2, 0x10000000 
+# directly
+  
+
 
 .section .data
 string: 
   .asciz "\nmyentry code is exceuted\nOrignal entry code follows\n" # The string to be printed
-uartbase:
-  .word 0x10000000  # UART base address (in QEMU)
 
 .section .text
 .global _myentry
@@ -20,10 +31,8 @@ print_loop:
   beqz t1, end_print  # If t1 is zero (NULL terminator), jump to end_print
 
   # Wait until the UART is ready to transmit the char 
-  # the next to lines, are doing the same as li t2, 0x10000000 
-  la a0, uartbase    # Load the address of the uartbase inti a0
-  lw t2, 0(a0)       # Load the word (4 bytes) into t2 
-  
+  li t2, UART0  # UART0 (baseaddress) is defined in memlayout.h  
+
 uart_ready:
   lbu t3, 5(t2)       # Load the UART Line Status Register (LSR)
   andi t3, t3, 0x20   # Check if Transmit Holding Register is empty  (5 bit of LSR)
