@@ -7,12 +7,8 @@
 volatile static int started = 0;
 // Use Entry Point Address in our main.c
 
-extern void _entry();
-void* entry_addr = &_entry;
-
-
-extern void _myentry();
-void* myentry_addr = &_myentry;
+extern void _entry;
+extern void _myentry;
 
 // start() jumps here in supervisor mode on all CPUs.
 void
@@ -43,8 +39,8 @@ main()
     printf("freepages %d\n", freepg());
     printf("free memory: %d bytes\n", freepg() * 4096);
     printf("hart %d started\n", cpuid());
-    printf("MY entrypoint address %p\n", myentry_addr);
-    printf("Entrypoint address %p\n", entry_addr);
+    printf("MY entrypoint address %p\n", _myentry);
+    printf("Entrypoint address %p\n", _entry);
     __sync_synchronize();
     started = 1;
   } else {
