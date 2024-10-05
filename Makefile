@@ -4,6 +4,7 @@ RAM=128M
 CPUCOUNT=2
 
 OBJS = \
+  $K/entry-2.o\
   $K/entry.o \
   $K/start.o \
   $K/console.o \
