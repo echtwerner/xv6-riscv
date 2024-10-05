@@ -1,10 +1,10 @@
 K=kernel
 U=user
 RAM=128M
-CPUCOUNT=2
+CPUCOUNT=8
 
 OBJS = \
-  $K/entry-2.o\
+  $K/entry-my.o\
   $K/entry.o \
   $K/start.o \
   $K/console.o \
