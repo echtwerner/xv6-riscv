@@ -7,8 +7,8 @@
 volatile static int started = 0;
 // Use Entry Point Address in our main.c
 
-extern void _entry;
-extern void _myentry;
+extern void _entry();
+extern void _myentry();
 
 // start() jumps here in supervisor mode on all CPUs.
 void
