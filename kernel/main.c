@@ -5,6 +5,10 @@
 #include "defs.h"
 
 volatile static int started = 0;
+// Use Entry Point Address in our main.c
+
+extern void _entry();
+void* entry_addr = &_entry;
 
 // start() jumps here in supervisor mode on all CPUs.
 void
@@ -35,6 +39,7 @@ main()
     printf("freepages %d\n", freepg());
     printf("free memory: %d bytes\n", freepg() * 4096);
     printf("hart %d started\n", cpuid());
+    printf("Entrypoint address %p\n", entry_addr);
     __sync_synchronize();
     started = 1;
   } else {
