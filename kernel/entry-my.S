@@ -21,8 +21,8 @@ print_loop:
 
   # Wait until the UART is ready to transmit the char 
   # the next to lines, are doing the same as li t2, 0x10000000 
-  la a0, uartbase
-  lw t2, 0(a0)
+  la a0, uartbase    # Load the address of the uartbase inti a0
+  lw t2, 0(a0)       # Load the word (4 bytes) into t2 
   
 uart_ready:
   lbu t3, 5(t2)       # Load the UART Line Status Register (LSR)
