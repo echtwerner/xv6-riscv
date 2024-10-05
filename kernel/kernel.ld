@@ -1,5 +1,5 @@
 OUTPUT_ARCH( "riscv" )
-ENTRY( _myentry )
+ENTRY( _entry )
 
 SECTIONS
 {
