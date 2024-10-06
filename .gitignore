@@ -16,3 +16,4 @@ tools/usys
 kernel/kernel
 user/usys.S
 .gdbinit
+.vscode
