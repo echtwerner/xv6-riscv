@@ -1,5 +1,6 @@
 K=kernel
 U=user
+T=tools
 RAM=128M
 CPUCOUNT=8
 
@@ -77,8 +78,8 @@ endif
 LDFLAGS = -z max-page-size=4096
 
 # Compile usys generator, thus replaces the usys.pl script
-tools/usys: tools/usys.c 
-	gcc -Werror -Wall -I. -o tools/usys tools/usys.c
+$T/usys: $T/usys.c 
+	gcc -Werror -Wall -I. -o $T/usys $T/usys.c
 
 
 $K/kernel: $(OBJS) $K/kernel.ld $U/initcode
@@ -103,8 +104,8 @@ _%: %.o $(ULIB)
 	$(OBJDUMP) -t $@ | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$$/d' > $*.sym
 
 # Generate usys.S	
-$U/usys.S: tools/usys
-	tools/usys
+$U/usys.S: $T/usys
+	$T/usys
 	perl $U/usys.pl > $U/usys-pl.S
 
 $U/usys.o : $U/usys.S
@@ -116,8 +117,8 @@ $U/_forktest: $U/forktest.o $(ULIB)
 	$(LD) $(LDFLAGS) -N -e main -Ttext 0 -o $U/_forktest $U/forktest.o $U/ulib.o $U/usys.o
 	$(OBJDUMP) -S $U/_forktest > $U/forktest.asm
 
-tools/mkfs: tools/mkfs.c $K/fs.h $K/param.h
-	gcc -Werror -Wall -I. -o tools/mkfs tools/mkfs.c
+$T/mkfs: $T/mkfs.c $K/fs.h $K/param.h
+	gcc -Werror -Wall -I. -o $T/mkfs $T/mkfs.c
 
 # Prevent deletion of intermediate files, e.g. cat.o, after first build, so
 # that disk image changes after first build are persistent until clean.  More
@@ -148,8 +149,8 @@ UPROGS=\
 	
 
 
-fs.img: tools/mkfs README $(UPROGS)
-	tools/mkfs fs.img README $(UPROGS)
+fs.img: $T/mkfs README $(UPROGS)
+	$T/mkfs fs.img README $(UPROGS)
 
 -include kernel/*.d user/*.d
 
