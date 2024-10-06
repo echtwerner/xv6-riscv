@@ -77,9 +77,7 @@ endif
 
 LDFLAGS = -z max-page-size=4096
 
-# Compile usys generator, thus replaces the usys.pl script
-$T/usys: $T/usys.c 
-	gcc -Werror -Wall -I. -o $T/usys $T/usys.c
+#
 
 
 $K/kernel: $(OBJS) $K/kernel.ld $U/initcode
@@ -103,10 +101,12 @@ _%: %.o $(ULIB)
 	$(OBJDUMP) -S $@ > $*.asm
 	$(OBJDUMP) -t $@ | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$$/d' > $*.sym
 
-# Generate usys.S	
+# Generate usys.S
+# Compile usys generator, this replaces the usys.pl script		
 $U/usys.S: $T/usys
-	$T/usys
-	perl $U/usys.pl > $U/usys-pl.S
+	gcc -Werror -Wall -I. -o $T/usys $T/usys.c
+	$T/usys $U/usys.S
+
 
 $U/usys.o : $U/usys.S
 	$(CC) $(CFLAGS) -c -o $U/usys.o $U/usys.S
