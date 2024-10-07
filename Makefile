@@ -1,8 +1,13 @@
 K=kernel
 U=user
 T=tools
-RAM=128M   # 128M is the default for xv6
-CPUCOUNT=3 # 3 is the default for xv6
+
+
+# 128M is the default for xv6 - Warning no trailing space after the number
+RAM=128
+# 3 is the default for xv6
+CPUCOUNT=3
+
 
 
 OBJS = \
@@ -63,6 +68,8 @@ OBJDUMP = $(TOOLPREFIX)objdump
 CFLAGS = -Wall -Werror -O -fno-omit-frame-pointer -ggdb -gdwarf-2
 CFLAGS += -MD
 CFLAGS += -mcmodel=medany
+CFLAGS += -DMAXMEM=$(RAM)
+CFLAGS += -DNCPU=$(CPUCOUNT)
 # CFLAGS += -ffreestanding -fno-common -nostdlib -mno-relax
 CFLAGS += -fno-common -nostdlib
 CFLAGS += -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset
@@ -173,7 +180,7 @@ ifndef CPUS
 CPUS := $(CPUCOUNT)
 endif
 
-QEMUOPTS = -machine virt -bios none -kernel $K/kernel -m $(RAM) -smp $(CPUS) -nographic
+QEMUOPTS = -machine virt -bios none -kernel $K/kernel -m $(RAM)M -smp $(CPUS) -nographic
 QEMUOPTS += -global virtio-mmio.force-legacy=false
 QEMUOPTS += -drive file=fs.img,if=none,format=raw,id=x0
 QEMUOPTS += -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0

@@ -20,10 +20,7 @@ main()
   if(cpuid() == 0){
     consoleinit();
     printfinit();
-    printf("\n");
-    printf("xv6 kernel is booting\n\n");
-    printf("Entrypoint address is %p\n\n", _entry);
-    printf("Stacksize per CPU is %d bytes\n\n", 1024 * CPUSTACKSIZE);
+    printf("\nxv6 kernel is booting\n\n");
     kinit();         // physical page allocator
     kvminit();       // create kernel page table
     kvminithart();   // turn on paging
@@ -37,16 +34,13 @@ main()
     fileinit();      // file table
     virtio_disk_init(); // emulated hard disk
     userinit();      // first user process
-    // The next two lines assume, that the function freepg() is defined  
-    printf("freepages %d\n", freepg());
-    printf("free memory: %d bytes\n", freepg() * 4096);
     printf("\n");
     printf("hart %d started\n", cpuid());
     __sync_synchronize();
     started = 1;
   } else {
     waitcycle[cpuid()]=0;
-    while(started == 0) {
+    while(started == 0){
       waitcycle[cpuid()]= waitcycle[cpuid()] + 1; //count the waitcylce per hart
     }
     __sync_synchronize();
