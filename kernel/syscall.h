@@ -1,23 +1,23 @@
-// System call numbers
-#define SYS_fork    1
-#define SYS_exit    2
-#define SYS_wait    3
-#define SYS_pipe    4
-#define SYS_read    5
-#define SYS_kill    6
-#define SYS_exec    7
-#define SYS_fstat   8
-#define SYS_chdir   9
-#define SYS_dup    10
-#define SYS_getpid 11
-#define SYS_sbrk   12
-#define SYS_pause  13
-#define SYS_uptime 14
-#define SYS_open   15
-#define SYS_write  16
-#define SYS_mknod  17
-#define SYS_unlink 18
-#define SYS_link   19
-#define SYS_mkdir  20
-#define SYS_close  21
-#define SYS_freepg 22
+// System call numbers and syscall_name 
+#define SYS_fork 1 // syscall_name: fork
+#define SYS_exit 2 // syscall_name: exit
+#define SYS_wait 3 // syscall_name: wait
+#define SYS_pipe 4 // syscall_name: pipe
+#define SYS_read 5 // syscall_name: read
+#define SYS_kill 6 // syscall_name: kill
+#define SYS_exec 7 // syscall_name: exec
+#define SYS_fstat 8 // syscall_name: fstat
+#define SYS_chdir 9 // syscall_name: chdir
+#define SYS_dup 10 // syscall_name: dup
+#define SYS_getpid 11 // syscall_name: getpid
+#define SYS_sbrk 12 // syscall_name: sys_sbrk
+#define SYS_pause 13 // syscall_name: pause
+#define SYS_uptime 14 // syscall_name: uptime
+#define SYS_open 15 // syscall_name: open
+#define SYS_write 16 // syscall_name: write
+#define SYS_mknod 17 // syscall_name: mknod
+#define SYS_unlink 18 // syscall_name: unlink
+#define SYS_link 19 // syscall_name: link
+#define SYS_mkdir 20 // syscall_name: mkdir
+#define SYS_close 21 // syscall_name: close
+#define SYS_freepg 22 // syscall_name: freepg
