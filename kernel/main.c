@@ -23,7 +23,7 @@ main()
     printf("\nxv6 kernel is booting\n\n");
     printf("Entrypoint address is %p\n\n", _entry);
     printf("Config from Makefile:\nmax memory is %dM\nmaximum number of CPUs is %d\n\n", MAXMEM, NCPU);
-    printf("Stacksize per CPU is %d bytes\n\n", 1024 * CPUSTACKSIZE);
+    printf("Stacksize per CPU is %d bytes\n\n", CPUSTACKSIZE);
     kinit();         // physical page allocator
     kvminit();       // create kernel page table
     kvminithart();   // turn on paging

@@ -1,4 +1,4 @@
-#define CPUSTACKSIZE  4 // Stacksize in KB per CPU - Currently leave on 4 KB this is xv6 default
+#define CPUSTACKSIZE  4096 // Stacksize in Byte per CPU - Currently leave on 4096 this is xv6 default
 #define NPROC        64  // maximum number of processes
 #define NOFILE       16  // open files per process
 #define NFILE       100  // open files per system

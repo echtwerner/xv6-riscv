@@ -11,7 +11,7 @@ _entry:
         # with a CPUSTACKSIZE-kilobytes stack per CPU as definied in param.h.
         # sp = stack0 + (hartid * CPUSTACKSIZE)
         la sp, stack0
-        li a0, 1024 * CPUSTACKSIZE
+        li a0, CPUSTACKSIZE
         csrr a1, mhartid
         addi a1, a1, 1
         mul a0, a0, a1
