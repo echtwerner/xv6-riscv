@@ -70,7 +70,6 @@ int main(int argc, char *argv[]) {
                 fprintf(output, " li a7, %s\n", syscall_name); // Use SYS_fork, not fork
                 fprintf(output, " ecall\n");
                 fprintf(output, " ret\n");
-                fprintf(output, "\n"); // Blank line between stubs
             }
         }
     }
