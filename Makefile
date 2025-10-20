@@ -74,7 +74,6 @@ CFLAGS += -MD
 CFLAGS += -mcmodel=medany
 CFLAGS += -DMAXMEM=$(RAM)
 CFLAGS += -DNCPU=$(CPUCOUNT)
-# CFLAGS += -ffreestanding -fno-common -nostdlib -mno-relax
 CFLAGS += -ffreestanding
 CFLAGS += -fno-common -nostdlib
 CFLAGS += -fno-builtin-strncpy -fno-builtin-strncmp -fno-builtin-strlen -fno-builtin-memset
